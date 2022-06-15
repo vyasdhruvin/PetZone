@@ -1,0 +1,10 @@
+
+     form = UserCreationForm()
+
+    context = {'form':form}
+    return render(request,"register.html",context)
+
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.isvalid():
+            form.save()

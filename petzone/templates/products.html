@@ -1,24 +1,23 @@
 {% extends 'base.html' %}
 {% block title %}Products{% endblock title %}
 {% block body %}
-{% csrf_token %}
-    This is Products Body block
+This is Products Body block
 
-    {%for message in messages%}
-    <div class="alert alert-{{message.tags}}alert-dismissible fade show " role="alert">
-    <strong>Message:</strong> {{message}}
-    <button type="button" class="close" data-dismiss="alert" aria-label="close">
-    <span aria-hidden="true">&times;</span>
-    </button>
-    </div>
-    {% endfor %}
+{%for message in messages%}
+<div class="alert alert-{{message.tags}}alert-dismissible fade show " role="alert">
+<strong>Message:</strong> {{message}}
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+{% endfor %}
 
-    {% if user.is_authenticated%}
-    <h3>Hello {{ fname }}</h3>
-    <h4>You're Successfully Logged in</h4>
-    <button type="submit"> <a href="/Signout">Logout</a></button>
-    {% endif%}
-    <button type="submit"> <a href="/Signin">Login</a></button>
-    <button type="submit"> <a href="/Register">Register</a></button>
+{% if user.is_authenticated%}
+<h3>Hello {{fname}}</h3>
+<h4>You're Successfully Logged in</h4>
+<button type="submit"> <a href="/Signout">Logout</a></button>
+{% endif%}
+<button type="submit"> <a href="/Signin">Login</a></button>
+<button type="submit"> <a href="/Register">Register</a></button>
 
 {% endblock body %}

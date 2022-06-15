@@ -1,4 +1,5 @@
 import email
+from email import message
 from unicodedata import name
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
@@ -19,10 +20,14 @@ def register(request):
 
 
         myuser = User.objects.create_user(username,email,pass1)
-        myuser.fname = fname
-        myuser.lname = lname
+        myuser.first_name = fname
+        myuser.last_name = lname
 
-        myuser.save()
+        if pass2==pass1:
+            myuser.save()
+        else:
+            message.EmailMessage("Password and Repeat Password is not same")
+            return render(request,"/Register")
 
         messages.success(request,"Your account has been sucessfully created")
  
